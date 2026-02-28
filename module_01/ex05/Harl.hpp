@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2026/01/07 18:46:14 by miricci           #+#    #+#             */
+/*   Updated: 2026/01/07 21:00:56 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int main( void ) {
+# include <iostream>
+# include <string>
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
-}
+class Harl
+{
+private:
+	void	debug( void );
+	void	info( void );
+	void	warning( void );
+	void	error( void );
+	
+	typedef	void (Harl::*Handler)();
+	
+	struct Entry
+	{
+		std::string	string;
+		Handler			fn;
+	};
+	
+	Entry table[4];
+	
+public:
+	Harl();
+	~Harl();
+		
+	void	complain( std::string level );
+};
+
+#endif

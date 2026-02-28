@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2025/12/21 14:27:33 by miricci           #+#    #+#             */
+/*   Updated: 2025/12/22 23:30:31 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef PHONEBOOK_CLASS_HPP
+# define PHONEBOOK_CLASS_HPP
 
-int main( void ) {
+# include <iostream>
+# include <string>
+# include <sstream>
+# include <iomanip>
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
-}
+# include "Contact.class.hpp"
+
+class PhoneBook {
+	public:
+		Contact items[8];
+		int	current_amount;
+		PhoneBook(void);
+		~PhoneBook(void);
+		void	addContact(void);
+		void	showContacts(void);
+};
+
+#endif

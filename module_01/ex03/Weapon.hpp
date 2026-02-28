@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2025/12/22 19:30:42 by miricci           #+#    #+#             */
+/*   Updated: 2025/12/22 20:08:22 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int main( void ) {
+# include <string>
+# include <iostream>
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
-}
+class Weapon
+{
+private:
+	std::string	type;
+public:
+	Weapon( std::string weaponType );
+	~Weapon();
+	
+	std::string getType( void ) const;
+	void	setType( std::string value );
+};
+
+#endif

@@ -5,23 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2025/12/22 16:48:03 by miricci           #+#    #+#             */
+/*   Updated: 2025/12/22 18:10:26 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Zombie.hpp"
 
-int main( void ) {
+int	main( void ) {
+	Zombie	*heapZombie;
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
+	std::cout << "Let's spot the difference!" << std::endl;
+	heapZombie = newZombie("heapGiaLoSai");
+	heapZombie->announce();
+	delete heapZombie;
+	randomChump("stackDiZona");
+	return 0;
 }

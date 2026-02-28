@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2025/12/22 18:20:31 by miricci           #+#    #+#             */
+/*   Updated: 2025/12/22 18:41:45 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Zombie.hpp"
 
-int main( void ) {
+Zombie::Zombie( void ) {
+	std::cout << "Zombie created." << std::endl;
+	return ;
+}
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
+Zombie::~Zombie( void ) {
+	std::cout << this->name + " destroyed." << std::endl;
+	return ;
+}
+
+void	Zombie::setName( std::string nm ) {
+	this->name = nm;
+	return ;
+}
+
+void	Zombie::announce( void ) const {
+	std::cout << this->name + ": BraiiiiiiinnnzzzZ" << std::endl;
+	return ;
 }

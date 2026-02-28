@@ -5,23 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2026/01/07 18:45:55 by miricci           #+#    #+#             */
+/*   Updated: 2026/01/08 15:49:32 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Harl.hpp"
 
-int main( void ) {
+int	main( void ) {
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
+	std::string	entry;
+	Harl	harl;
+	
+	std::cout << "Welcome to Harl's Karen phase. Please insert the kind of complain you'd like to make." << std::endl;
+	std::cin >> entry;
+	harl.complain(entry);
 }

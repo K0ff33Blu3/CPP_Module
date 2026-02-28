@@ -5,23 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:40:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/27 17:28:53 by miricci          ###   ########.fr       */
+/*   Created: 2026/01/08 16:08:44 by miricci           #+#    #+#             */
+/*   Updated: 2026/01/08 18:09:12 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Harl.hpp"
 
-int main( void ) {
+std::string	toUpper( char *entry ) {
+	
+	int i = -1;
+	
+	while (entry[++i])
+		entry[i] = std::toupper(entry[i]);
+	return entry;
+}
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	return (0);
+int	main( int ac, char **av ) {
+
+	if (ac != 2)
+		return (1);
+	
+	Harl	harl;
+	std::string s(toUpper(av[1]));
+	
+	switch (harl.parseEntry(s))
+	{
+	case Harl::DEBUG:
+		harl.complain("DEBUG");
+	case Harl::INFO:
+		harl.complain("INFO");
+	case Harl::WARNING:
+		harl.complain("WARNING");
+	case Harl::ERROR:
+		harl.complain("ERROR");
+	default:
+		break;
+	}	
 }

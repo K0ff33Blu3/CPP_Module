@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:01:07 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/24 14:14:52 by miricci          ###   ########.fr       */
+/*   Updated: 2026/02/27 17:28:36 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ class Fixed
 		
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
+		
+		bool	operator>( const Fixed& other );
+		bool	operator<( const Fixed& other );
+		bool	operator>=( const Fixed& other );
+		bool	operator<=( const Fixed& other );
+		bool	operator==( const Fixed& other );
+		bool	operator!=( const Fixed& other );
+		
+		Fixed	operator+( const Fixed& other ) const;
+		Fixed	operator-( const Fixed& other ) const;
+		Fixed	operator*( const Fixed& other ) const;
+		Fixed	operator/( const Fixed& other ) const;
+		
+		
+		
+		
 };
 
 std::ostream& operator<<( std::ostream& o, const Fixed& f );

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:01:37 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/24 15:02:26 by miricci          ###   ########.fr       */
+/*   Updated: 2026/02/27 17:30:42 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,129 @@ std::ostream& operator<<( std::ostream& o, const Fixed& f ) {
 	
 	o << f.toFloat();
 	return (o);
+}
+
+bool	Fixed::operator>( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue > shiftedOtherValue);
+}
+
+bool	Fixed::operator>=( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue >= shiftedOtherValue);
+}
+
+bool	Fixed::operator<( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue < shiftedOtherValue);
+}
+
+bool	Fixed::operator<=( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue <= shiftedOtherValue);	
+}
+
+bool	Fixed::operator==( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue == shiftedOtherValue);
+}
+
+bool	Fixed::operator!=( const Fixed& other ) {
+	
+	int	cbp;
+	
+	if (bp >= other.bp)
+		cbp = bp;
+	else
+		cbp = other.bp;
+	
+	int	shiftedValue = raw_value << (cbp - bp);
+	int	shiftedOtherValue = other.raw_value << (cbp - other.bp);
+	
+	return (shiftedValue != shiftedOtherValue);
+}
+
+Fixed	Fixed::operator+( const Fixed& other ) const {
+	
+	Fixed	res;
+
+	int		shiftedRaw = other.raw_value << (bp - other.bp);
+	res.raw_value = raw_value + shiftedRaw;
+	return (res);		
+}
+
+Fixed	Fixed::operator-( const Fixed& other ) const {
+	
+	Fixed	res;
+
+	int		shiftedRaw = other.raw_value << (bp - other.bp);
+	res.raw_value = raw_value - shiftedRaw;
+	return (res);		
+}
+
+Fixed	Fixed::operator*( const Fixed& other ) const {
+	
+	Fixed	res;
+
+	
+	return (res);		
+}
+
+Fixed	Fixed::operator/( const Fixed& other ) const {
+	
+	Fixed	res;
+
+	int		shiftedRaw = other.raw_value << (bp - other.bp);
+	res.raw_value = raw_value / shiftedRaw;
+	return (res);		
 }
