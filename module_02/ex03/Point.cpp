@@ -6,37 +6,45 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 17:20:30 by miricci           #+#    #+#             */
-/*   Updated: 2026/02/28 18:01:38 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/03 14:42:59 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Point::Point( void ) : x(0), y(0) {
+Point::Point( void ) : _x(0), _y(0) {
 	
 	return ;
 }
 
-Point::Point( const float x, const float y ) : x(x), y(y) {
+Point::Point( const float x, const float y ) : _x(x), _y(y) {
 	
 	return ;
 }
 
-Point::Point( const Point& other ) : x(other.x), y(other.y) {
+Point::Point( const Point& other ) : _x(other._x), _y(other._y) {
 	
 	return ;
 }
 
 Point& Point::operator=( const Point& other ) {
 	
-	if (this->x != other.x)
-		this->x = other.x;
-	if (this->y != other.y)
-		this->y = other.y;
+	(void)other;
+	std::cerr << "Impossible to modify const values." << std::endl;
 	return (*this);
 }
 
 Point::~Point() {
 
 	return ;
+}
+
+const Fixed	Point::getX( void ) {
+	
+	return (_x);
+}
+
+const Fixed	Point::getY( void ) {
+	
+	return (_y);
 }
