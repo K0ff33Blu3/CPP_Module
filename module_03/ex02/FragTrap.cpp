@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:57:13 by miricci          ###   ########.fr       */
+/*   Created: 2026/03/05 17:35:14 by miricci           #+#    #+#             */
+/*   Updated: 2026/03/05 17:44:39 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int		main( void ) {
+FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
+	 
+	_hitpoints = 100;
+	_energyPoints = 100;
+	_attackDamage = 30;
+	std::cout << GRAY << "FragTrap constructor called." << RESET << std::endl; 
+}
+
+FragTrap::~FragTrap() {
 	
-	ClapTrap	u("Cleto");
-	ScavTrap	v("Steve");
-	ScavTrap	w(v);
+	std::cout << GRAY << "Destructor called." << RESET << std::endl;
+}
+
+void FragTrap::highFiveGuys( void ) {
 	
-	u.attack("enemy");
-	u.takeDamage(5);
-	u.beRepaired(2);
-	
-	v.attack("enemy");
-	v.takeDamage(25);
-	v.beRepaired(10);
-	v.guardGate();
-	
-	w.attack("enemy");
-	w.takeDamage(25);
-	w.beRepaired(10);
-	w.guardGate();
-	
-	return (0);
+	std::cout << "High Fiveeeee!!!" << std::endl;
 }

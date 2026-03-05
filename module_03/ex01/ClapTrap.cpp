@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 10:27:49 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:30:42 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/05 18:19:38 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ ClapTrap::ClapTrap( ClapTrap& other ) : _name(other._name), _hitpoints(other._hi
 
 ClapTrap& ClapTrap::operator=( ClapTrap& other ) {
 	
-	_name = other._name;
-	_hitpoints = other._hitpoints;
-	_energyPoints = other._energyPoints;
-	_attackDamage = other._attackDamage;
+	if (this != &other ) {
+		_name = other._name;
+		_hitpoints = other._hitpoints;
+		_energyPoints = other._energyPoints;
+		_attackDamage = other._attackDamage;
+	}
 	return (*this);
 }
 
 ClapTrap::~ClapTrap() {
 
-	std::cout << GRAY << "Destructor called." << RESET << std::endl;
+	std::cout << GRAY << "ClapTrap destructor called." << RESET << std::endl;
 }
 
 void	ClapTrap::attack( const std::string& target ) {
@@ -46,8 +48,11 @@ void	ClapTrap::attack( const std::string& target ) {
 
 void	ClapTrap::takeDamage( unsigned int amount ) {
 
-	std::cout << _name << " takes damage of " << amount << std::endl;
 	_hitpoints -= amount;
+	std::cout << _name << " takes damage of " << amount << std::endl;
+	if (_hitpoints < 0 )
+		_hitpoints = 0;
+	std::cout << _hitpoints << " left" << std::endl;
 }
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
@@ -56,5 +61,6 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		
 		std::cout << _name << " heals of " << amount << " energy points " << std::endl;
 		_hitpoints += amount;
+		std::cout << _hitpoints << " left" << std::endl;
 	}
 }

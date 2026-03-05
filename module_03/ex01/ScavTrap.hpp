@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:28:45 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:22:36 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/05 18:16:59 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 class ScavTrap: public ClapTrap
 {
-private:
-	
 public:
 	ScavTrap( std::string name );
+	ScavTrap( const ScavTrap& other );
+	ScavTrap& operator=( const ScavTrap& other );
 	~ScavTrap();
 	
 	void guardGate();

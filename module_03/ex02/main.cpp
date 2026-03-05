@@ -6,31 +6,25 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:57:13 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/05 17:56:36 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int		main( void ) {
 	
-	ClapTrap	u("Cleto");
-	ScavTrap	v("Steve");
-	ScavTrap	w(v);
+	FragTrap	u("Franco");
+	ClapTrap	v("Cleto");
+	
+	v.attack("enemy");
+	v.takeDamage(5);
+	v.beRepaired(2);
 	
 	u.attack("enemy");
 	u.takeDamage(5);
 	u.beRepaired(2);
-	
-	v.attack("enemy");
-	v.takeDamage(25);
-	v.beRepaired(10);
-	v.guardGate();
-	
-	w.attack("enemy");
-	w.takeDamage(25);
-	w.beRepaired(10);
-	w.guardGate();
+	u.highFiveGuys();
 	
 	return (0);
 }
