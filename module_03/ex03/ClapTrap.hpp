@@ -6,19 +6,19 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 10:27:52 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:33:10 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:12:13 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
- 
+
 # include <string>
 # include <iostream>
  
 # define GRAY	"\033[90m"
 # define RESET	"\033[0m"
- 
+
 
 class ClapTrap
 {
@@ -28,8 +28,8 @@ protected:
 	int				_energyPoints;
 	int				_attackDamage;
 public:
-	ClapTrap( void );
 	ClapTrap( std::string name );
+	ClapTrap( void );
 	ClapTrap( ClapTrap& other );
 	ClapTrap& operator=( ClapTrap &other );
 	~ClapTrap();
@@ -37,6 +37,7 @@ public:
 	void	attack( const std::string& target );
 	void	takeDamage( unsigned int amount );
 	void	beRepaired( unsigned int amount );
+	
 };
 
 #endif

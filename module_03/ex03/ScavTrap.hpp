@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:28:45 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:35:07 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:37:09 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 public:
 	ScavTrap( void );
@@ -23,8 +23,9 @@ public:
 	ScavTrap( const ScavTrap& other );
 	ScavTrap& operator=( const ScavTrap& other );
 	~ScavTrap();
-	
+		
 	void guardGate();
+	
 };
 
 #endif

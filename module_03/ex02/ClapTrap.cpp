@@ -6,11 +6,16 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 10:27:49 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:53:58 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:32:47 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap( void ) : _name(NULL), _hitpoints(10), _energyPoints(10), _attackDamage(0) {
+	
+	std::cout << GRAY << "ClapTrap constructor called." << RESET << std::endl;
+}
 
 ClapTrap::ClapTrap( std::string name ) : _name(name), _hitpoints(10), _energyPoints(10), _attackDamage(0) {
 	

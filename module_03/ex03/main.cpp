@@ -6,32 +6,39 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 13:32:21 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:28:57 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int		main( void ) {
 	
-	FragTrap	u("Franco");
-	ClapTrap	v("Cleto");
-	ScavTrap	w("Steve");
+	FragTrap	f("Franco");
+	ClapTrap	c("Cleto");
+	ScavTrap	s("Steve");
+	DiamondTrap	d("Danny");
 	
-	v.attack("enemy");
-	v.takeDamage(5);
-	v.beRepaired(2);
+	c.attack("enemy");
+	c.takeDamage(5);
+	c.beRepaired(2);
 	
-	u.attack("enemy");
-	u.takeDamage(5);
-	u.beRepaired(2);
-	u.highFiveGuys();
+	f.attack("enemy");
+	f.takeDamage(5);
+	f.beRepaired(2);
+	f.highFiveGuys();
 	
-	w.attack("enemy");
-	w.takeDamage(5);
-	w.beRepaired(2);
-	w.guardGate();
+	s.attack("enemy");
+	s.takeDamage(5);
+	s.beRepaired(2);
+	s.guardGate();
 	
+	d.attack("enemy");
+	d.takeDamage(5);
+	d.beRepaired(2);
+	d.highFiveGuys();
+	d.guardGate();
+	d.whoAmI();
+		
 	return (0);
 }

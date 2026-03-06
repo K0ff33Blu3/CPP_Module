@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 10:27:52 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/05 17:23:28 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:30:22 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ private:
 	int				_energyPoints;
 	int				_attackDamage;
 public:
+	ClapTrap( void );
 	ClapTrap( std::string name );
 	ClapTrap( ClapTrap& other );
 	ClapTrap& operator=( ClapTrap &other );

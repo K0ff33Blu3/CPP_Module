@@ -6,13 +6,13 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:35:14 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:35:35 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/06 14:41:56 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap( void ) : ClapTrap() {
+FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
 	 
 	_hitpoints = 100;
 	_energyPoints = 100;
@@ -20,7 +20,7 @@ FragTrap::FragTrap( void ) : ClapTrap() {
 	std::cout << GRAY << "FragTrap constructor called." << RESET << std::endl; 
 }
 
-FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
+FragTrap::FragTrap( void ) : ClapTrap() {
 	 
 	_hitpoints = 100;
 	_energyPoints = 100;
@@ -50,7 +50,7 @@ FragTrap& FragTrap::operator=( const FragTrap& other ) {
 
 FragTrap::~FragTrap() {
 	
-	std::cout << GRAY << "Destructor called." << RESET << std::endl;
+	std::cout << GRAY << "FragTrap destructor called." << RESET << std::endl;
 }
 
 void FragTrap::highFiveGuys( void ) {
