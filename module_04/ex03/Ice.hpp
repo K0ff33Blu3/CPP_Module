@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 14:51:35 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/07 08:01:54 by miricci          ###   ########.fr       */
+/*   Created: 2026/03/06 17:32:59 by miricci           #+#    #+#             */
+/*   Updated: 2026/03/08 09:27:15 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-# define GRAY	"\033[90m"
-# define RESET	"\033[0m"
+# include "AMateria.hpp"
 
-# include <string>
-# include <iostream>
-
-class Animal
+class Ice : public AMateria
 {
-protected:
-	std::string type;
 public:
-	Animal( void );
-	Animal( const Animal& other );
-	Animal& operator=( const Animal& other );
-	virtual ~Animal();
+	Ice( void );
+	Ice( const Ice& other );
+	Ice& operator=( const Ice& other );
+	~Ice();
 	
-	virtual void	makeSound( void ) const;
-	std::string		getType() const;
-	void			setType( const std::string str );
+	AMateria* clone() const;
+	void use(ICharacter& target);
 };
-
 
 #endif

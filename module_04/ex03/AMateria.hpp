@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 14:51:35 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/07 08:01:54 by miricci          ###   ########.fr       */
+/*   Created: 2026/03/06 17:31:03 by miricci           #+#    #+#             */
+/*   Updated: 2026/03/08 12:21:40 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
-
-# define GRAY	"\033[90m"
-# define RESET	"\033[0m"
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 # include <string>
 # include <iostream>
 
-class Animal
+# define GRAY	"\033[90m"
+# define RESET	"\033[0m"
+
+class	ICharacter;
+
+class	AMateria
 {
 protected:
-	std::string type;
+	std::string	_type;
 public:
-	Animal( void );
-	Animal( const Animal& other );
-	Animal& operator=( const Animal& other );
-	virtual ~Animal();
+	AMateria( void );
+	AMateria( const std::string& type );
+	AMateria( const AMateria& other );
+	AMateria& operator=( const AMateria& other );
+	virtual ~AMateria( void );
 	
-	virtual void	makeSound( void ) const;
-	std::string		getType() const;
-	void			setType( const std::string str );
+	std::string const & getType() const;
+	
+	virtual AMateria* clone() const = 0;
+	virtual void use(ICharacter& target);
 };
-
 
 #endif

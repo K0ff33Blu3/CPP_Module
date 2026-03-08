@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:51:35 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 17:00:47 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/07 08:25:42 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ public:
 	
 	virtual void	makeSound( void ) const;
 	std::string		getType() const;
+	void			setType( const std::string str );
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:45:26 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 16:27:12 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/07 08:13:51 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	WrongAnimal( void );
 	WrongAnimal( const WrongAnimal& other );
 	WrongAnimal& operator=( const WrongAnimal& other );
-	~WrongAnimal();
+	virtual ~WrongAnimal();
 	
 	void	makeSound() const;
 };

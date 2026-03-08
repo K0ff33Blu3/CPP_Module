@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:53:09 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 16:27:41 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/07 07:54:52 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ void	Animal::makeSound( void ) const {
 std::string	Animal::getType() const {
 	
 	return (type);
+}
+
+void	Animal::setType( const std::string str ) {
+	
+	type = str;
 }
