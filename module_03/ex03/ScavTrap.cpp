@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:41:03 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:42:29 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/09 11:04:29 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap( void ) : ClapTrap() {
 	_hitpoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << GRAY << "FragTrap constructor called." << RESET << std::endl; 
+	std::cout << GRAY << "ScavTrap constructor called." << RESET << std::endl; 
 }
 
 ScavTrap::ScavTrap( const ScavTrap& other ) : ClapTrap( other._name ) {

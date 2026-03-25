@@ -1,10 +1,10 @@
-NAME = IceNCure
+NAME = Bureaucrat
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+SRC = main.cpp Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

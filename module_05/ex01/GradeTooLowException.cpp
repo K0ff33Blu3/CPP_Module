@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   GradeTooLowException.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/09 10:22:46 by miricci          ###   ########.fr       */
+/*   Created: 2026/03/16 14:42:12 by miricci           #+#    #+#             */
+/*   Updated: 2026/03/23 18:22:55 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "GradeTooLowException.hpp"
+ 
+// GradeTooLowException::GradeTooLowException() {
+	
+// }
 
-int		main( void ) {
+// GradeTooLowException::~GradeTooLowException() {
 	
-	ClapTrap	u("prova");
-	
-	u.attack("enemy");
-	u.takeDamage(5);
-	u.takeDamage(5);
-	u.beRepaired(2);
-	
-	
-	return (0);
+// }
+
+const char*	GradeTooLowException::what() const throw() {
+	return ("grade too low");
 }

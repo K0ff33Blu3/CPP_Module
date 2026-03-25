@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:28:57 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/09 11:07:18 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 int		main( void ) {
 	
-	FragTrap	f("Franco");
-	ClapTrap	c("Cleto");
-	ScavTrap	s("Steve");
+	// FragTrap	f("Franco");
+	// ClapTrap	c("Cleto");
+	// ScavTrap	s("Steve");
 	DiamondTrap	d("Danny");
+	DiamondTrap copy(d);
 	
-	c.attack("enemy");
-	c.takeDamage(5);
-	c.beRepaired(2);
+	// c.attack("enemy");
+	// c.takeDamage(5);
+	// c.beRepaired(2);
 	
-	f.attack("enemy");
-	f.takeDamage(5);
-	f.beRepaired(2);
-	f.highFiveGuys();
+	// f.attack("enemy");
+	// f.takeDamage(5);
+	// f.beRepaired(2);
+	// f.highFiveGuys();
 	
-	s.attack("enemy");
-	s.takeDamage(5);
-	s.beRepaired(2);
-	s.guardGate();
+	// s.attack("enemy");
+	// s.takeDamage(5);
+	// s.beRepaired(2);
+	// s.guardGate();
 	
 	d.attack("enemy");
 	d.takeDamage(5);
@@ -39,6 +40,11 @@ int		main( void ) {
 	d.highFiveGuys();
 	d.guardGate();
 	d.whoAmI();
+	
+	copy.takeDamage(5);
+	copy.highFiveGuys();
+	copy.guardGate();
+	copy.whoAmI();
 		
 	return (0);
 }

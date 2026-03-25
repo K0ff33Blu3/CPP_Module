@@ -6,11 +6,11 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 18:51:54 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/08 12:21:50 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/09 12:34:53 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARCTER_HPP
+#ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
 # include <string>

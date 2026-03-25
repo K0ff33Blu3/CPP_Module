@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   GradeTooHighException.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/09 10:22:46 by miricci          ###   ########.fr       */
+/*   Created: 2026/03/19 13:40:29 by miricci           #+#    #+#             */
+/*   Updated: 2026/03/23 18:14:39 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef GRADETOOHIGHEXCEPTION_HPP
+# define GRADETOOHIGHEXCEPTION_HPP
 
-int		main( void ) {
+# include <exception>
+
+class GradeTooHighException : public std::exception
+{
+public:
+	// GradeTooHighException();
+	// ~GradeTooHighException();
 	
-	ClapTrap	u("prova");
-	
-	u.attack("enemy");
-	u.takeDamage(5);
-	u.takeDamage(5);
-	u.beRepaired(2);
-	
-	
-	return (0);
-}
+	const char*	what() const throw();
+};
+
+#endif
