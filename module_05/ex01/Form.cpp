@@ -6,23 +6,19 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:43:59 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/23 18:41:48 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 17:18:15 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form( void ) : _name(""), _signed(false), _gradeSign(1), _gradeExec(1) {
-}
+Form::Form( void ) : _name(""), _signed(false), _gradeSign(1), _gradeExec(1) {}
 
-Form::Form( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(sign_grade), _gradeExec(exec_grade) {
-}
+Form::Form( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(sign_grade), _gradeExec(exec_grade) {}
 
-Form::~Form() {
-}
+Form::~Form() {}
 
-Form::Form( Form const & other ) : _name(other._name), _signed(other._signed), _gradeSign(other._gradeSign), _gradeExec(other._gradeSign) {
-}
+Form::Form( Form const & other ) : _name(other._name), _signed(other._signed), _gradeSign(other._gradeSign), _gradeExec(other._gradeSign) {}
 
 Form&	Form::operator=( Form const & other ) {
 	if (this != &other) {
@@ -52,8 +48,16 @@ int			Form::getGradeExec() const {
 
 void				Form::beSigned( Bureaucrat const & b ) {
 	if (b.getGrade() > _gradeSign)
-		throw tooLow;
+		throw GradeTooLowException();
 	_signed = true;
+}
+
+const char*	Form::GradeTooHighException::what() const throw() {
+	return ("grade too high");
+}
+
+const char*	Form::GradeTooLowException::what() const throw() {
+	return ("grade too low");
 }
 
 std::ostream& operator<<( std::ostream& o, const Form& f ) {

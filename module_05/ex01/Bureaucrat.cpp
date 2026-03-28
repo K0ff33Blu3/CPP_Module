@@ -6,26 +6,26 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:27:09 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/23 18:37:42 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 17:13:15 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ) : _name(""), _grade(150) {
-}
+Bureaucrat::Bureaucrat( void ) : _name(""), _grade(150) {}
 
-Bureaucrat::Bureaucrat( const std::string name, int grade ) : _name(name), _grade(grade){
+Bureaucrat::Bureaucrat( const std::string name, int grade ) : _name(name), _grade(grade) {
+	
 	if (_grade < 1 )
-		throw tooHigh;
+		throw GradeTooHighException();
 	else if ( _grade > 150)
-		throw tooLow;
+		throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat& other ) : _name(other._name), _grade(other._grade) {
-}
+Bureaucrat::Bureaucrat( const Bureaucrat& other ) : _name(other._name), _grade(other._grade) {}
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other ) {
+	
 	if (this != &other) {
 		
 		const_cast<std::string&>(_name) = other._name;
@@ -34,8 +34,7 @@ Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other ) {
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {
-}
+Bureaucrat::~Bureaucrat() {}	
 
 std::string	Bureaucrat::getName( void ) const {
 	return (_name);
@@ -46,10 +45,11 @@ int			Bureaucrat::getGrade( void ) const {
 }
 
 void		Bureaucrat::increment_grade( void ) {
+	
 	try {
 		_grade--;
 		if (_grade < 1)
-			throw tooHigh;
+			throw GradeTooHighException();
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -57,27 +57,37 @@ void		Bureaucrat::increment_grade( void ) {
 }
 
 void		Bureaucrat::decrement_grade( void ) {
+	
 	try {
 		_grade++;
 		if (_grade > 150)
-			throw tooLow;
+			throw GradeTooLowException();
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 }
 
-void		Bureaucrat::signForm( Form& f ) {
+const char*	Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Grade Too High");
+}
+
+const char*	Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade Too Low");
+}
+
+void		Bureaucrat::signForm( Form & f ) const {
 	try {
 		f.beSigned(*this);
 	}
 	catch(const std::exception& e) {
-		std::cerr << *this << " couldn't sign " << f << " because " << e.what() << '\n';
+		std::cerr << this << " couldn't sign " << f << " beacause " << e.what() << std::endl;
 	}
-	std::cout << *this << " signed " << f << std::endl;
+	std::cout << this << " signed " << f << std::endl;
 }
 
 std::ostream& operator<<( std::ostream& o, const Bureaucrat& b ) {
+
 	o << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return o;
 }

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:27:23 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/19 13:44:39 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 17:13:45 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 class Bureaucrat
 {
@@ -37,8 +35,15 @@ public:
 	void	increment_grade();
 	void	decrement_grade();
 	
-	GradeTooHighException	tooHigh;
-	GradeTooLowException	tooLow;
+	class GradeTooHighException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
 };
 
 std::ostream& operator<<( std::ostream& o, const Bureaucrat& other );

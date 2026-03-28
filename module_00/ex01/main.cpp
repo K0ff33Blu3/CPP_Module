@@ -6,12 +6,12 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 13:18:41 by miricci           #+#    #+#             */
-/*   Updated: 2025/12/22 19:00:23 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 14:29:32 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 bool	isDigitOnly(std::string str) {
 	for (std::string::iterator it = str.begin(); it < str.end(); ++it) {
@@ -29,17 +29,15 @@ int	main(void) {
 	std::cout << std::endl << "\033[95mWelcome to PhoneBook! :)\033[0m" << std::endl;
 	while (1) {
 		std::cout << std::endl <<"Write ADD to add new contact, SEARCH to see contact list, EXIT to quit." << std::endl;
-		std::getline(std::cin, cmd);
-		
+		if (!std::getline(std::cin, cmd) || cmd == "EXIT") {
+			std::cout << std::endl << "\033[95mBye! :)\033[0m" << std::endl;
+			break ;
+		}		
 		if (cmd == "ADD") {
 			myPhoneBook.addContact();
 		}
 		else if (cmd == "SEARCH") {
 			myPhoneBook.showContacts();
-		}
-		else if (cmd == "EXIT") {
-			std::cout << std::endl << "\033[95mBye! :)\033[0m" << std::endl;
-			break ;
 		}
 		else
 			std::cout << std::endl << "I'm sorry, my vocabulary is very low..." << std::endl;

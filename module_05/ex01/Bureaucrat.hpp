@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:27:23 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/23 18:11:42 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 17:13:45 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 #include <string>
 #include <exception>
 #include "Form.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
-class	Form;
+class Form;
 
 class Bureaucrat
 {
@@ -40,10 +38,17 @@ public:
 	void	increment_grade();
 	void	decrement_grade();
 	
-	GradeTooHighException	tooHigh;
-	GradeTooLowException	tooLow;
-	
-	void	signForm( Form& f );
+	class GradeTooHighException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
+
+	void	signForm( Form & f ) const;
 };
 
 std::ostream& operator<<( std::ostream& o, const Bureaucrat& other );

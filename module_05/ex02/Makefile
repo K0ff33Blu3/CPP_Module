@@ -1,10 +1,10 @@
-NAME = Form
+NAME = ManyForms
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -21,6 +21,8 @@ $(NAME): $(OBJ)
 clean:
 	@rm -f $(OBJ)
 	@echo -e "\033[33m✘ Object files removed\033[0m"
+	@rm -f *_shrubbery
+	@echo -e "\033[33m✘ Shrubbery files removed\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)

@@ -1,10 +1,10 @@
-NAME = phonebook
+NAME = Interns
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Contact.cpp PhoneBook.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -20,7 +20,9 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo -e "\033[33m✘ Object file removed\033[0m"
+	@echo -e "\033[33m✘ Object files removed\033[0m"
+	@rm -f *_shrubbery
+	@echo -e "\033[33m✘ Shrubbery files removed\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)

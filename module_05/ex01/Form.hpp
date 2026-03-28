@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:36:53 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/23 18:31:08 by miricci          ###   ########.fr       */
+/*   Updated: 2026/03/27 17:15:41 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <string>
 # include <iostream>
 # include "Bureaucrat.hpp"
-# include "GradeTooHighException.hpp"
-# include "GradeTooLowException.hpp"
 
 class	Bureaucrat;
 
@@ -35,8 +33,15 @@ public:
 	Form& operator=( Form const & other );
 	~Form();
 	
-	GradeTooHighException	tooHigh;
-	GradeTooLowException	tooLow;
+	class GradeTooHighException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		const char*	what() const throw();
+	};
 	
 	std::string	const	getName() const;
 	bool				getSigned() const;
