@@ -14,7 +14,7 @@
 
 Form::Form( void ) : _name(""), _signed(false), _gradeSign(1), _gradeExec(1) {}
 
-Form::Form( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(sign_grade), _gradeExec(exec_grade) {}
+Form::Form( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(isValidGrade(sign_grade)), _gradeExec(isValidGrade(exec_grade)) {}
 
 Form::~Form() {}
 
@@ -34,7 +34,7 @@ std::string	const		Form::getName() const {
 	return (_name);
 }
 
-bool				Form::getSigned() const {
+bool				Form::isSigned() const {
 	return (_signed);
 }
 
@@ -44,6 +44,12 @@ int			Form::getGradeSign() const {
 
 int			Form::getGradeExec() const {
 	return (_gradeExec);
+}
+
+int		Form::isValidGrade( int grade ) const {
+	if (grade < 1)		{ throw GradeTooHighException(); return 0; }
+	else if (grade > 150)	{ throw GradeTooLowException(); return 0; }
+	return grade;
 }
 
 void				Form::beSigned( Bureaucrat const & b ) {

@@ -31,7 +31,7 @@ public:
 	AForm( std::string const name, int const sign_grade, int const exec_grade );
 	AForm( AForm const & other );
 	AForm& operator=( AForm const & other );
-	~AForm();
+	virtual ~AForm();
 	
 	class GradeTooHighException : public std::exception {
 	public:
@@ -52,6 +52,7 @@ public:
 	bool				isSigned() const;
 	int					getGradeSign() const;
 	int					getGradeExec() const;
+	int					isValidGrade( int grade ) const;
 	
 	void				beSigned( Bureaucrat const & b );
 	void				execute( Bureaucrat const & executor ) const;

@@ -14,50 +14,43 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
-int		main( void ) {
-	
-	Bureaucrat	new_hire("Newbie", 145);
-	Bureaucrat	chair_man("Boss", 1);
-	Bureaucrat	career_man("Chad", 70);
-	
-	PresidentialPardonForm		pp_doc("Arthur Dent");
-	RobotomyRequestForm			rr_doc("Ford Prefect");
-	ShrubberyCreationForm		sc_doc("home");
-	
-	// OUTSTREAM TESTS
-	std::cout << sc_doc << std::endl;
-	std::cout << rr_doc << std::endl;
-	std::cout << pp_doc << std::endl;
-	
-	// COPY CONSTRUCTOR TESTS
-	RobotomyRequestForm copy(rr_doc);
-	std::cout << copy << std::endl;
-	
-	// ASSIGNEMENT OPERATOR TESTS
-	ShrubberyCreationForm	other_copy("");
-	other_copy = sc_doc;
-	std::cout << other_copy << std::endl;
-	
-	// SIGN TEST
-	new_hire.signForm(sc_doc);			// should sign
-	new_hire.signForm(rr_doc);			// should throw exception
-	new_hire.signForm(pp_doc);			// should throw exception
-	
-	career_man.signForm(sc_doc);		// should sign
-	career_man.signForm(rr_doc);		// should sign
-	career_man.signForm(pp_doc);		// should throw exception
+int	main( void )
+{
+    Intern		boy;
+    Bureaucrat	low("New hire", 136);
+    Bureaucrat	mid("Manager", 45);
+    Bureaucrat	high("President", 1);
 
-	new_hire.executeForm(sc_doc);		// should throw exception grade too low
-	new_hire.executeForm(rr_doc);		// should throw exception grade too low
-	new_hire.executeForm(pp_doc);		// should throw exception grade too low
+    AForm*	f1 = NULL;
+    AForm*	f2 = NULL;
+    AForm*	f3 = NULL;
+    AForm*	f4 = NULL;
 
-	career_man.executeForm(sc_doc);		// should execute
-	career_man.executeForm(rr_doc);		// should throw exception grade too low
+    try {
+        f1 = boy.makeForm("shrubbery creation", "office");
+        low.signForm(*f1);
+        low.executeForm(*f1);
 
-	chair_man.executeForm(rr_doc);		// should execute
-	chair_man.executeForm(pp_doc);		// should throw exception form not signed
+        f2 = boy.makeForm("robotomy request", "Mario");
+        mid.signForm(*f2);
+        mid.executeForm(*f2);
 
-	chair_man.signForm(pp_doc);			// should sign
-	chair_man.executeForm(pp_doc);		// should execute
+        f3 = boy.makeForm("presidential pardon", "Jack Sparrow");
+        high.signForm(*f3);
+        high.executeForm(*f3);
+
+        f4 = boy.makeForm("blblblblblblblbl", "nonna");
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    delete f1;
+    delete f2;
+    delete f3;
+    delete f4;
+
+    return (0);
 }

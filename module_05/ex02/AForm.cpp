@@ -14,7 +14,7 @@
 
 AForm::AForm( void ) : _name(""), _signed(false), _gradeSign(1), _gradeExec(1) {}
 
-AForm::AForm( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(sign_grade), _gradeExec(exec_grade) {}
+AForm::AForm( std::string const name, int const sign_grade, int const exec_grade ) : _name(name), _signed(false), _gradeSign(isValidGrade(sign_grade)), _gradeExec(isValidGrade(exec_grade)) {}
 
 AForm::~AForm() {}
 
@@ -50,6 +50,12 @@ void		AForm::beSigned( Bureaucrat const & b ) {
 	if (b.getGrade() > _gradeSign)
 		throw GradeTooLowException();
 	_signed = true;
+}
+
+int		AForm::isValidGrade( int grade ) const {
+	if (grade < 1)		{ throw GradeTooHighException(); }
+	else if (grade > 150)	{ throw GradeTooLowException(); }
+	return grade;
 }
 
 const char*	AForm::GradeTooHighException::what() const throw() {

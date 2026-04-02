@@ -1,3 +1,6 @@
+#include <sstream>
+#include <cctype>
+
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -7,20 +10,30 @@ class AForm;
 class Intern
 {
 private:
-	typedef	AForm::AForm 
-	struct formTable
+	static AForm*	createPresidentialPardonForm( std::string const target );
+	static AForm*	createRobotomyRequestForm( std::string const target );
+	static AForm*	createShrubberyCreationForm( std::string const target );
+
+	typedef	AForm* (*formCreator)( std::string const );
+
+	struct formTable {
+		std::string		request;
+		formCreator		create;
+	};
+
+	formTable _table[3];
+
+	class UnknownFormException : public std::exception
 	{
-		std::string request;
-		AForm&		formKind;
+	public:
+		const char*	what() const throw();
 	};
 	
-	formTable _table[3];
 public:
 	Intern( void );
 	Intern( Intern const & other );
 	Intern& operator=( Intern const & other );
 	~Intern();
 
-
-	AForm&	makeForm( std::string name, std::string target );
+	AForm*	makeForm( std::string name, std::string target );
 };

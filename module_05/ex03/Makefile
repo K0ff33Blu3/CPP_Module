@@ -4,7 +4,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -26,6 +26,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo -e "\033[33m✘ $(NAME) removed\033[0m" 
+	@echo -e "\033[33m✘ $(NAME) removed\033[0m"
 
 re: fclean all
