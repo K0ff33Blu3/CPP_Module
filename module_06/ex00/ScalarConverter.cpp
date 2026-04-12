@@ -42,7 +42,7 @@ bool					ScalarConverter::isIntLit( std::string& lit ) {
 }
 
 bool					ScalarConverter::isFloatLit( std::string& lit ) {
-	if (lit == "-inff" || lit == "+inff" || lit == "nanf")
+	if (lit == "-inff" || lit == "+inff" || lit == "nanf" || lit == "inff")
 		return true;
 	if (lit.empty() || lit[lit.length() - 1] != 'f')
 		return false;
@@ -54,7 +54,7 @@ bool					ScalarConverter::isFloatLit( std::string& lit ) {
 }
 
 bool					ScalarConverter::isDoubleLit( std::string& lit ) {
-	if (lit == "-inf" || lit == "+inf" || lit == "nan")
+	if (lit == "-inf" || lit == "+inf" || lit == "nan" || lit == "inff" || lit == "inf")
 		return true;
 	if (lit.empty() || !lit.find('.'))
 		return false;
@@ -71,7 +71,6 @@ ScalarConverter::eType	ScalarConverter::detect( std::string& lit ) {
 	if	(isDoubleLit(lit))		return DOUBLE;
 	else 						return UNKNOWN;
 }
-
 
 
 // FUNZIONI DI STAMPA
@@ -105,12 +104,11 @@ void					ScalarConverter::printFloat( double val ) {
 void					ScalarConverter::printDouble( double val ) {
 	if (std::isnan(val))				{std::cout << "double: nan" << std::endl;									return ;}
 	if (std::isinf(val))				{std::cout << "double: " << (val > 0 ? "+" : "-") << "inf" << std::endl;	return ;}
-	if (val < DBL_MIN || val > DBL_MAX)	{std::cout << "double: impossible" << std::endl;								return ;}
+	if (val < DBL_MIN || val > DBL_MAX)	{std::cout << "double: impossible" << std::endl;							return ;}
 	std::cout << "double: " << static_cast<double>(val);
 	if (!(val - std::floor(val)))	std::cout << ".0";
 	std::cout << std::endl;
 }
-
 
 
 
@@ -147,7 +145,7 @@ void					ScalarConverter::convert( std::string& lit ) {
 	case FLOAT : {
 		if		(lit == "nanf")		{imp_nbr = true; val = std::numeric_limits<float>::quiet_NaN();}
 		else if (lit == "-inff")	{imp_nbr = true; val = -std::numeric_limits<float>::infinity();}
-		else if (lit == "+inff")	{imp_nbr = true; val = std::numeric_limits<float>::infinity();}
+		else if (lit == "+inff" || lit == "inff")	{imp_nbr = true; val = std::numeric_limits<float>::infinity();}
 		else {
 			std::istringstream iss(lit);
 			float f; iss >> f;
@@ -158,7 +156,7 @@ void					ScalarConverter::convert( std::string& lit ) {
 	case DOUBLE : {
 		if 		(lit == "nan")		{imp_nbr = true; val = std::numeric_limits<double>::quiet_NaN();}
 		else if (lit == "-inf")		{imp_nbr = true; val = -std::numeric_limits<double>::infinity();}
-		else if (lit == "+inf")		{imp_nbr = true; val = std::numeric_limits<double>::infinity();}
+		else if (lit == "+inf" || lit == "inf")		{imp_nbr = true; val = std::numeric_limits<double>::infinity();}
 		else {
 			std::istringstream iss(lit);
 			iss >> val;
@@ -173,5 +171,4 @@ void					ScalarConverter::convert( std::string& lit ) {
 	printInt(val, imp_nbr);
 	printFloat(val);
 	printDouble(val);
-	
 }

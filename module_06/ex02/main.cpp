@@ -45,9 +45,11 @@ void	identify( Base& p ) {
 
 int	main( void ) {
 	Base *	b = generate();
-	Base *	n;
-	identify(b);
-	identify(*b);
+	Base&	n = *b;
+	std::cout << "Pointer class type: ";	identify(b);
+	std::cout << "Reference class type: ";	identify(*b);
+	std::cout << "Pointer class type: ";	identify(&n);
+	std::cout << "Reference class type: ";	identify(n);
 	delete b;
 	return 0;
 }

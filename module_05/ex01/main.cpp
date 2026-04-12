@@ -15,12 +15,12 @@
 int		main( void ) {
 	try {
 		Bureaucrat	new_hire;
-		Bureaucrat	chair_man("Boss", -1);
-		Bureaucrat	career_man("Chad", 165);
+		Bureaucrat	chair_man("Boss", 1);
+		Bureaucrat	career_man("Chad", 50);
 
-		Form		easy_doc("low risk", 151, 149);
+		Form		easy_doc("low risk", 150, 149);
 		Form		medium_doc("mid risk", 70, 60);
-		Form		superimportant_doc("high risk", -1, 1);
+		Form		superimportant_doc("high risk", 1, 1);
 
 		std::cout << easy_doc << std::endl;
 		std::cout << medium_doc << std::endl;

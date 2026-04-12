@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 15:22:00 by miricci           #+#    #+#             */
-/*   Updated: 2026/04/01 16:25:21 by miricci          ###   ########.fr       */
+/*   Created: 2026/04/01 18:19:31 by miricci           #+#    #+#             */
+/*   Updated: 2026/04/03 14:39:41 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
-#include "Serializer.hpp"
-#include "Data.hpp"
 
-int		main( void ) {
-	Data	d(0,0);
+template	<typename T, typename Func>
+	void	iter(T* t, std::size_t const len, Func f) {
+		for (std::size_t i = 0; i < len; i++) {
+			f(t[i]);
+		}
+	}
 
-	uintptr_t	ptr = Serializer::serialize(&d);
-	std::cout << ptr << std::endl;
-	std::cout << *(Serializer::deserialize(ptr)) << std::endl;
-	return 0;
-}
+template	<typename T>
+	void	printData( T const & data ) {
+		std::cout << data << std::endl;
+	}

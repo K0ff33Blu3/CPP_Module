@@ -1,4 +1,4 @@
-NAME = ex3
+NAME = ABC
 
 CC = c++
 
