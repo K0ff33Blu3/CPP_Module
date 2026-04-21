@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:28:45 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/06 14:37:09 by miricci          ###   ########.fr       */
+/*   Updated: 2026/04/19 15:32:08 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ public:
 	~ScavTrap();
 		
 	void guardGate();
-	
 };
 
 #endif

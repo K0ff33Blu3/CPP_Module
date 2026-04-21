@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:16:22 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/09 11:07:18 by miricci          ###   ########.fr       */
+/*   Updated: 2026/04/19 15:33:09 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		main( void ) {
 	// ClapTrap	c("Cleto");
 	// ScavTrap	s("Steve");
 	DiamondTrap	d("Danny");
-	DiamondTrap copy(d);
 	
 	// c.attack("enemy");
 	// c.takeDamage(5);
@@ -40,11 +39,6 @@ int		main( void ) {
 	d.highFiveGuys();
 	d.guardGate();
 	d.whoAmI();
-	
-	copy.takeDamage(5);
-	copy.highFiveGuys();
-	copy.guardGate();
-	copy.whoAmI();
 		
 	return (0);
 }
