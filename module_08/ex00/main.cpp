@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 11:55:33 by miricci           #+#    #+#             */
-/*   Updated: 2026/04/19 13:51:19 by miricci          ###   ########.fr       */
+/*   Updated: 2026/04/22 20:38:38 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,32 +57,5 @@ int	main( void ) {
 	{
 		std::cerr << e.what() << '\n';
 	}
-
-	std::cout << "\033[1;45m	====TEST CON ARRAY====	\033[0m" << std::endl;	
-	std::stack<int> st;
-	st.push(42);
-	st.push(56);
-	st.push(-76);
-	st.push(0);
-	st.push(987);
-	st.push(-543);
-	
-	try
-	{
-		easyfind(st, 34);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		easyfind(st, 24);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
 }
 
