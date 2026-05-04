@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:53:09 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/09 14:39:11 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/04 10:24:10 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Animal::~Animal( void ) {
 	std::cout << GRAY << "Animal destructor called" << RESET << std::endl;
 }
 
-void	Animal::makeSound( void ) const {
+void	Animal::makeSound( void ) {
 
 	std::cout << "BUHYVFTGBNJKGTYCFVHGBJJH" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 14:51:35 by miricci           #+#    #+#             */
-/*   Updated: 2026/03/07 08:01:54 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/04 10:23:59 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	Animal& operator=( const Animal& other );
 	virtual ~Animal();
 	
-	virtual void	makeSound( void ) const;
+	virtual void	makeSound( void );
 	std::string		getType() const;
 	void			setType( const std::string str );
 };
