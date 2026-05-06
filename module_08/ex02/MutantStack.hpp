@@ -6,11 +6,12 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 15:42:05 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/02 17:14:41 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/06 12:47:46 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack>
+#include <deque>
 #include <algorithm>
 #include <iostream>
 
@@ -26,18 +27,12 @@ class MutantStack : public std::stack<T>
 		MutantStack& operator=( const MutantStack& other );
 		~MutantStack( void );
 
-		class iterator : public std::iterator<std::bidirectional_iterator_tag, T>
-		{
-			private:
-				
-			public:
-				iterator( void );
-				iterator( iterator const & other );
-				iterator& operator=( iterator const & other );
-				~iterator( void );
+		typedef	typename std::deque<T>::iterator	iterator;
 
-				
-		}
+		iterator	begin();
+		iterator	end();
 };
+
+#include "MutantStack.tpp"
 
 #endif
