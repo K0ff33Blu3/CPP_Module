@@ -14,7 +14,7 @@
 #include <deque>
 
 int main() {
-	std::cout << "=== TEST: Basic addNumber ===" << std::endl;
+	std::cout << "\033[1;45m=== TEST: Basic addNumber ===\033[0m" << std::endl;
     {
         Span sp = Span(5);
         sp.addNumber(6);
@@ -27,7 +27,7 @@ int main() {
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
     }
 
-	std::cout << "\n=== TEST: Memory ===" << std::endl;
+	std::cout << "\n\033[1;45m=== TEST: Memory ===\033[0m" << std::endl;
     {
         Span sp = Span(7);
         sp.addNumber(6);
@@ -40,7 +40,7 @@ int main() {
         std::cout << "Span capacity: " << sp.getSize() << std::endl;
     }
 
-    std::cout << "\n=== TEST: FullSpanException ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: FullSpanException ===\033[0m" << std::endl;
     {
         Span sp = Span(2);
         sp.addNumber(1);
@@ -53,7 +53,7 @@ int main() {
 		std::cout << sp << std::endl;
     }
 
-    std::cout << "\n=== TEST: addLotsOfNumbers (vector) ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: addLotsOfNumbers (vector) ===\033[0m" << std::endl;
     {
         std::vector<int> vec;
         vec.push_back(5);
@@ -67,7 +67,7 @@ int main() {
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
     }
 
-    std::cout << "\n=== TEST: addLotsOfNumbers (deque) ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: addLotsOfNumbers (deque) ===\033[0m" << std::endl;
     {
         std::deque<int> deq;
         deq.push_back(5);
@@ -81,7 +81,7 @@ int main() {
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
     }
 
-    std::cout << "\n=== TEST: NoSpanFoundException (1 element) ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: NoSpanFoundException (1 element) ===\033[0m" << std::endl;
     {
         Span sp = Span(5);
         sp.addNumber(42);
@@ -92,7 +92,7 @@ int main() {
         }
     }
 
-    std::cout << "\n=== TEST: Identical elements (span = 0) ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: Identical elements (span = 0) ===\033[0m" << std::endl;
     {
         Span sp = Span(3);
         sp.addNumber(5);
@@ -103,7 +103,7 @@ int main() {
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
     }
 
-    std::cout << "\n=== TEST: Negative numbers ===" << std::endl;
+    std::cout << "\n\033[1;45m=== TEST: Negative numbers ===\033[0m" << std::endl;
     {
         Span sp = Span(4);
         sp.addNumber(-10);
