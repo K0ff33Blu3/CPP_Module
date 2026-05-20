@@ -4,7 +4,7 @@
 int main()
 {
 	{
-		std::cout << "\n=== TEST CON MUTANT STACK ===" << std::endl;
+		std::cout << "\n\033[1;45m=== TEST CON MUTANT STACK ===\033[0m" << std::endl;
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
@@ -26,19 +26,19 @@ int main()
 			++it;
 		}
 		std::stack<int> s(mstack);
-		std::cout << "\n=== TEST CON ALGORITHMS ===" << std::endl;
-		std::cout << "\n--- ricerca elemento più basso tramite min_element() ---" << std::endl;
+		std::cout << "\n\033[1;45m=== TEST CON ALGORITHMS ===\033[0m" << std::endl;
+		std::cout << "\n\033[1;35m--- ricerca elemento più basso tramite min_element() ---\033[0m" << std::endl;
 		it = min_element(mstack.begin(), mstack.end());
 		std::cout << *it << std::endl;
-		std::cout << "\n--- ricerca iteratore elemento tramite find() ---" << std::endl;
+		std::cout << "\n\033[1;35m--- ricerca iteratore elemento tramite find() ---\033[0m" << std::endl;
 		it = find(mstack.begin(), mstack.end(), 5);
 		std::cout << *it << std::endl;
-		std::cout << "\n--- ricerca numero ripetizioni di un elemento tramite count() ---" << std::endl;
+		std::cout << "\n\033[1;35m--- ricerca numero ripetizioni di un elemento tramite count() ---\033[0m" << std::endl;
 		int nbr = count(mstack.begin(), mstack.end(), 5);
 		std::cout << nbr << std::endl;
 	}
 	{
-		std::cout << "\n=== TEST CON LIST ===" << std::endl;
+		std::cout << "\n\033[1;45m=== TEST CON LIST ===\033[0m" << std::endl;
 		std::list<int> lst;
 		lst.push_back(5);
 		lst.push_back(17);
