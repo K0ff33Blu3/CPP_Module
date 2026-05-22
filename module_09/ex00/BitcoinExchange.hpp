@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:29:48 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/20 11:42:00 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/22 14:54:52 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 
 class BitcoinExchange
 {
@@ -27,6 +29,7 @@ class BitcoinExchange
 
 		static std::map<std::string, float>	exchangeRates;
 		static std::map<std::string, float>	initRates();
+		
 	public:
 		static void	exchange(std::map<std::string, float> const & inMap);
 };
