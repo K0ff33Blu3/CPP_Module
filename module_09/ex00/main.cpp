@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:21:44 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/22 16:14:45 by miricci          ###   ########.fr       */
+/*   Updated: 2026/06/02 14:36:44 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,7 @@ int main(int argc, char** argv) {
 	(void)argc;
 	try
 	{
-		std::ifstream infile(argv[1]);
-		if (!infile.is_open()) {
-			throw std::runtime_error("could not open file.");
-		}
-		// std::string line;
-		// while (std::getline(infile, line)) {
-			
-		// }
-
+		BitcoinExchange::exchange(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
