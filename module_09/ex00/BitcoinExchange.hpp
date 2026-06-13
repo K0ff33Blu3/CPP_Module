@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 10:29:48 by miricci           #+#    #+#             */
-/*   Updated: 2026/06/02 14:35:29 by miricci          ###   ########.fr       */
+/*   Updated: 2026/06/13 17:33:59 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class BitcoinExchange
 		BitcoinExchange& operator=( const BitcoinExchange& other );
 		~BitcoinExchange( void );
 		
-		static std::map<std::string, float>	exchangeRates;
-		static std::map<std::string, float>	initRates();
-		
-		static bool	checkDate( std::string key );
+		static std::map<std::string, float> _exchangeRates;
+			
+		static bool		checkDate( std::string key );
+		static float	searchRate( std::string key );
 		
 	class NegativeValueException : public std::exception
 	{
@@ -52,6 +52,7 @@ class BitcoinExchange
 	};
 	
 	public:
+		static void	initRates();
 		static void	exchange( std::string filename );
 };
 
