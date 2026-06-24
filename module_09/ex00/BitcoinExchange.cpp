@@ -37,34 +37,28 @@ BitcoinExchange::~BitcoinExchange( void ) {}
 // INIZIALIZZAZIONE MAPPA
 
 void BitcoinExchange::initRates() {
-	try
-	{
-		std::ifstream infile("data.csv");
-		if (!infile.is_open()) {
-			throw std::runtime_error("could not open file.");
-		}
-		std::string line;
-		while (std::getline(infile, line)) {
-			if (line == "date,exchange_rate")
-				continue ;
-			size_t comma_pos = line.find(',');
-			std::string key, strvalue;
-			key = line.substr(0, comma_pos);
-			if (checkDate(key) == false)
-				throw BadInputException();
-			std::remove(key.begin(), key.end(), ' ');
-			strvalue = line.substr(comma_pos + 1);
-			std::istringstream iss(strvalue);
-			float fvalue;
-			iss >> fvalue;
-			if (fvalue < 0)
-				throw NegativeValueException();
-			_exchangeRates[key] = fvalue;
-		}
+	std::ifstream infile("data.csv");
+	if (!infile.is_open()) {
+		throw std::runtime_error("could not open file.");
+		// return ;
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "ERROR: " << e.what() << '\n';
+	std::string line;
+	while (std::getline(infile, line)) {
+		if (line == "date,exchange_rate")
+			continue ;
+		size_t comma_pos = line.find(',');
+		std::string key, strvalue;
+		key = line.substr(0, comma_pos);
+		if (checkDate(key) == false)
+			throw BadInputException();
+		std::remove(key.begin(), key.end(), ' ');
+		strvalue = line.substr(comma_pos + 1);
+		std::istringstream iss(strvalue);
+		float fvalue;
+		iss >> fvalue;
+		if (fvalue < 0)
+			throw NegativeValueException();
+		_exchangeRates[key] = fvalue;
 	}
 }
 
@@ -87,8 +81,20 @@ bool	BitcoinExchange::checkDate( std::string key ) {
 	ss.str(leftover.erase(0, 1)); leftover.clear();
 	ss.clear(); ss.seekg(0);
 	ss >> day; ss >> leftover;
-	if (day > 31) {
-		return false;
+	if (month == 2) {
+		if (year % 4 == 0) {
+			if (day > 29)
+				return false;
+		} else {
+			if (day > 28)
+				return false;
+		}
+	} else if (month == 4 || month == 6 || month == 9 || month == 11) {
+		if (day > 30)
+			return false;
+	} else 
+		if (day > 31) {
+			return false;
 	}
 	if (!leftover.empty()) {
 		return false;

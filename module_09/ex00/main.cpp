@@ -15,14 +15,16 @@
 #include <exception>
 
 int main(int argc, char** argv) {
-	(void)argc;
 	try
 	{
+		if (argc != 2)
+			throw std::invalid_argument("Usage: ./btc <filename>");
 		BitcoinExchange::initRates();
+		BitcoinExchange::exchange(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "ERROR: " << e.what() << '\n';
+		return 1;
 	}
-	BitcoinExchange::exchange(argv[1]);
 }
