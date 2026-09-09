@@ -1,12 +1,31 @@
 #include "PMergeMe.hpp"
 
+bool isDigitOnly(char *s) {
+	std::string str(s);
+	for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
+		if (std::isdigit(*it) == false)
+			return false;
+	}
+	return true;
+}
+
 PMergeMe::PMergeMe( void ) : v(0), d(0) {}
 
-PMergeMe::PMergeMe( int *nbr, int size ) {
+PMergeMe::PMergeMe( char **args, int size ) {
+	long *nbr = new long[size];
+	for (int i = 0; i < size; i++) {
+		if (!isDigitOnly(args[i]))
+			throw NumbersException();
+		std::istringstream	iss(args[i]);
+		iss >> nbr[i];
+		if (nbr[i] > 2147483647)
+			throw NumberTooLarge();
+	}
 	for (int i = 0; i < size; i++) {
 		v.push_back(nbr[i]);
 		d.push_back(nbr[i]);
 	}
+	delete [] nbr;
 }
 
 PMergeMe::PMergeMe( PMergeMe const & other ) : v(other.v), d(other.d) {}
@@ -159,3 +178,6 @@ void	PMergeMe::pmerge( void ) {
 	std::cout << "Time to process a range of " << v.size() << " elements with std::vector : " << vTime << "ms" << std::endl;
 	std::cout << "Time to process a range of " << d.size() << " elements with std::deque : " << dTime << "ms" << std::endl;
 }
+
+const char *PMergeMe::NumbersException::what() const throw() { return "Error"; }
+const char *PMergeMe::NumberTooLarge::what() const throw() { return "Number too large: insert positive integer"; }
