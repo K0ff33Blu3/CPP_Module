@@ -132,6 +132,8 @@ static void fordJohnson(Container& data)
     fordJohnson(winners);
 
     Container main = winners;
+	if (!losers.empty())
+    		main.insert(main.begin(), losers[0]);
 
     std::vector<size_t> order = buildInsertionOrder(losers.size());
     for (size_t o = 0; o < order.size(); ++o)
