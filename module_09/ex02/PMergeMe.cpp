@@ -102,47 +102,68 @@ static std::vector<size_t> buildInsertionOrder(size_t count)
     return order;
 }
 
+template <typename T>
+struct TagElem
+{
+    T value;
+    std::vector<size_t> tags;
+};
+
+template <typename T>
+static bool operator<(const TagElem<T>& a, const TagElem<T>& b) { return a.value < b.value; }
+template <typename T>
+static bool operator>(const TagElem<T>& a, const TagElem<T>& b) { return a.value > b.value; }
+
 template <typename Container>
-static void fordJohnson(Container& data)
+static void fordJohnsonCore(Container& data)
 {
     typedef typename Container::iterator Iter;
-    typedef typename Container::value_type T;
+    typedef typename Container::value_type E;
 
     size_t n = data.size();
     if (n < 2)
         return;
 
-    Container winners, losers;
+    Container losers, majors;
     Container stragglers;
 
     size_t i = 0;
     for (; i + 1 < n; i += 2)
     {
-        T a = data[i];
-        T b = data[i + 1];
-        if (a > b)
+        E a = data[i];
+        E b = data[i + 1];
+        if (a.value > b.value)
             std::swap(a, b);
+        b.tags.push_back(losers.size());
         losers.push_back(a);
-        winners.push_back(b);
+        majors.push_back(b);
     }
     for (; i < n; ++i)              // raccoglie TUTTI gli elementi avanzati
         stragglers.push_back(data[i]);
 
-    Container winnersOriginalOrder = winners;
-    fordJohnson(winners);
+    fordJohnsonCore(majors);
+
+    Container winners = majors;
+    std::vector<size_t> loserIdxOf(winners.size());
+    for (size_t k = 0; k < winners.size(); ++k)
+    {
+        loserIdxOf[k] = winners[k].tags.back();
+        winners[k].tags.pop_back();
+    }
 
     Container main = winners;
-	if (!losers.empty())
-    		main.insert(main.begin(), losers[0]);
+    if (!losers.empty())
+        main.insert(main.begin(), losers[loserIdxOf[0]]);
 
     std::vector<size_t> order = buildInsertionOrder(losers.size());
     for (size_t o = 0; o < order.size(); ++o)
     {
         size_t k = order[o];
-        T partnerValue = winnersOriginalOrder[k];
+        E partnerValue = winners[k];
+        size_t loserIdx = loserIdxOf[k];
         Iter bound = std::lower_bound(main.begin(), main.end(), partnerValue);
-        Iter pos = std::upper_bound(main.begin(), bound, losers[k]);
-        main.insert(pos, losers[k]);
+        Iter pos = std::upper_bound(main.begin(), bound, losers[loserIdx]);
+        main.insert(pos, losers[loserIdx]);
     }
 
     // inserisco ogni straggler, uno alla volta, con upper_bound su tutto main
@@ -153,6 +174,36 @@ static void fordJohnson(Container& data)
     }
 
     data = main;
+}
+
+static void fordJohnson(std::vector<int>& data)
+{
+    std::vector<TagElem<int> > work;
+    for (size_t i = 0; i < data.size(); ++i)
+    {
+        TagElem<int> e;
+        e.value = data[i];
+        work.push_back(e);
+    }
+    fordJohnsonCore(work);
+    data.clear();
+    for (size_t i = 0; i < work.size(); ++i)
+        data.push_back(work[i].value);
+}
+
+static void fordJohnson(std::deque<int>& data)
+{
+    std::deque<TagElem<int> > work;
+    for (size_t i = 0; i < data.size(); ++i)
+    {
+        TagElem<int> e;
+        e.value = data[i];
+        work.push_back(e);
+    }
+    fordJohnsonCore(work);
+    data.clear();
+    for (size_t i = 0; i < work.size(); ++i)
+        data.push_back(work[i].value);
 }
 
 void	PMergeMe::pmerge( void ) {
@@ -177,8 +228,8 @@ void	PMergeMe::pmerge( void ) {
 	}
 	std::cout << std::endl;
 
-	std::cout << "Time to process a range of " << v.size() << " elements with std::vector : " << vTime << "ms" << std::endl;
-	std::cout << "Time to process a range of " << d.size() << " elements with std::deque : " << dTime << "ms" << std::endl;
+	std::cout << "Time to process a range of " << v.size() << " elements with std::vector : " << vTime << "us" << std::endl;
+	std::cout << "Time to process a range of " << d.size() << " elements with std::deque : " << dTime << "us" << std::endl;
 }
 
 const char *PMergeMe::NumbersException::what() const throw() { return "Error"; }

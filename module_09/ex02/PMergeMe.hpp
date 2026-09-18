@@ -55,9 +55,6 @@ class PMergeMe
 		void	pmerge( void );
 };
 
-template <typename Container>
-static void fordJohnson(Container& data);
-
 bool isDigitOnly(std::string s);
 
 #endif
