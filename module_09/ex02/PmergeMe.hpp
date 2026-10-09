@@ -20,7 +20,7 @@ class PMergeMe
 		
 	public:
 		PMergeMe( void );
-		PMergeMe( int *nbr, int size );
+		PMergeMe( char **nbr, int size );
 		PMergeMe( const PMergeMe& other );
 		PMergeMe& operator=( const PMergeMe& other );
 		~PMergeMe( void );
@@ -38,12 +38,23 @@ class PMergeMe
 			private:
     			struct timeval _start;
     			struct timeval _stop;
-};
+		};
+
+		class NumbersException : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
+
+		class NumberTooLarge : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 
 		void	pmerge( void );
 };
 
-template <typename Container>
-static void fordJohnson(Container& data);
+bool isDigitOnly(std::string s);
 
 #endif

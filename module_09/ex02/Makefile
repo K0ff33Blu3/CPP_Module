@@ -1,10 +1,10 @@
-NAME = PmergeME
+NAME = PmergeMe
 
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror --std=c++98 -g
 
-SRCS = main.cpp PMergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 GREEN := $(shell tput setaf 2)
 RED := $(shell tput setaf 1)
