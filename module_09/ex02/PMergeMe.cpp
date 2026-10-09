@@ -60,19 +60,21 @@ static std::vector<size_t> insertionGroupBounds(size_t upTo)
 static std::vector<size_t> buildInsertionOrder(size_t count)
 {
     std::vector<size_t> order;
-    if (count <= 1)
-        return order;  // solo losers[0]: niente altro da ordinare
+    if (count == 0)
+        return order;
+    order.push_back(0);
+    if (count == 1)
+        return order;
 
     std::vector<size_t> bounds = insertionGroupBounds(count);
 
-    size_t prevBoundary = 1;  // t(1) = 1, gia' gestito (losers[0])
+    size_t prevBoundary = 1;
     for (size_t i = 1; i < bounds.size(); ++i)
     {
         size_t hi = bounds[i];
         if (hi > count)
             hi = count;
 
-        // dentro ogni gruppo: ordine DECRESCENTE
         for (size_t idx1 = hi; idx1 > prevBoundary; --idx1)
             order.push_back(idx1 - 1);
 
@@ -106,7 +108,7 @@ static void fordJohnson(Container& data)
         losers.push_back(a);
         winners.push_back(b);
     }
-    for (; i < n; ++i)              // raccoglie TUTTI gli elementi avanzati
+    for (; i < n; ++i)
         stragglers.push_back(data[i]);
 
     Container winnersOriginalOrder = winners;
@@ -124,7 +126,6 @@ static void fordJohnson(Container& data)
         main.insert(pos, losers[k]);
     }
 
-    // inserisco ogni straggler, uno alla volta, con upper_bound su tutto main
     for (typename Container::iterator it = stragglers.begin(); it != stragglers.end(); ++it)
     {
         Iter pos = std::upper_bound(main.begin(), main.end(), *it);

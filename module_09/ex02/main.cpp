@@ -7,8 +7,7 @@ int main(int argc, char **argv) {
 	for (int i = 0; i < argc - 1; i++) {
 		std::istringstream	iss(argv[i + 1]);
 		char			leftover;
-		iss >> ptr[i]; iss >> leftover;
-		if (!leftover)
+		if (!(iss >> ptr[i]) || (iss >> leftover))
 			return  delete[] ptr, std::cerr << "Error" << std::endl, -1;
 		if (ptr[i] < 0)
 			return	delete[] ptr, std::cerr << "Error" << std::endl, -1;
