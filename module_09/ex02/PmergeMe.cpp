@@ -79,7 +79,7 @@ static std::vector<size_t> buildInsertionOrder(size_t count)
 {
     std::vector<size_t> order;
     if (count <= 1)
-        return order;  // losers[0] e' gia' inserito in testa a main
+        return order;
 
     std::vector<size_t> bounds = insertionGroupBounds(count);
 
